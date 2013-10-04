@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
 <script src="/static/jqueryui/js/jquery-1.9.1.js"></script>
 <script src="/static/bootstrap/js/bootstrap.js"></script>
+@section('header_section')
+@show
+
 </head>
 <body data-spy="scroll" data-target=".subnav" data-offset="80">
 <div class="navbar navbar-inverse">
@@ -52,11 +55,12 @@
 		<header class="jumbotron subhead" id="overview">
 		  <div class="row">
 		    <div class="span12">
-		      <h2>Welcome to NammaMLA</h2>
-		      <p class="lead">Subtitle of NammaMLA</p>
+		    	<div class="span6">
+					@section('main_title')
+					@show
+				</div>
 		    </div>
 		  </div>
-		
 		</header>
          
          
@@ -66,7 +70,7 @@
 		    	 <div class="well">
 
 			@section('sidebar')
-			    This is the master sidebar.
+			    <!--This is the master sidebar. -->
 			@show
 			 </div>
 		    </div>
