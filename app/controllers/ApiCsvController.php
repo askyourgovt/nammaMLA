@@ -11,7 +11,7 @@ class ApiCsvController extends BaseController {
 	
 	public function apiRepAllAttendanceCSV()
 	{
-		$this->layout->content = View::make('homeWelcome.blade.php');
+		$this->layout->content = View::make('apiCSV');
 	}
 
 }

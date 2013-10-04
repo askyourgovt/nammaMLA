@@ -13,9 +13,14 @@
 
 Route::get('/', 'HomeController@homeWelcome');
 
-Route::get('/rep/{rep_key}', 'RepController@repHomepage');
+Route::get('/about', 'StaticPagesController@aboutPage');
+Route::get('/license', 'StaticPagesController@licensePage');
 
+
+Route::get('/rep/{rep_key}', 'RepController@repHomepage');
 Route::get('/rep/attendance/{rep_key}', 'RepController@repAttendance');
+
+
 
 Route::get('/api/rep/{rep_key}/attendance/csv', 'ApiCsvController@apiRepAllAttendanceCSV');
 
