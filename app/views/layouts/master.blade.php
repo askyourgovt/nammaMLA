@@ -33,9 +33,23 @@
         <div class="nav-collapse">
           <ul class="nav">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Representatives<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/about">About</a></li>
+                  <li><a href="/cabinet/meetings">14 Assembly</a></li>
+                </ul>
+               </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cabinet<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/cabinet/meetings">Meetings</a></li>
+                </ul>
+               </li>
+
+             <li><a href="">Questions</a></li>  
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/about">About us</a></li>
                   <li><a href="/license">License</a></li>
                 </ul>
                </li>
@@ -94,17 +108,40 @@
         
 	     <!-- Footer
 	      ================================================== -->
-	      <footer class="footer">
-	      <div class="container">
-		<div class="span12">
-		  <div class="span2">
-		    <row>
-		    <div class="span2" align="center" style="height:125px; width:125px; background-color:#0B5BAE;border-radius:10px;"><br><center><font color="white"><br>Namma<br>MLA</font></center></div>
-		    </row>
-		  </div>
-		 </div>
-	      </div>
-	      </footer>
+<footer class="footer" >
+      <div class="container">
+        <div class="span12">
+          <div class="span2">
+            <row>
+            <div class="span2" align="center" style="height:125px; width:125px; background-color:#0B5BAE;border-radius:10px;"><br><br><center><font color="white">Namma<br>MLA</font></center></div>
+            </row>
+          </div>
+
+          <div class="span3">
+              <ul class="nav nav-list bs-docs-sidenav affix-top">
+                <li><a href="/about"><i class="icon-user"></i>&nbsp;About NammaMLA</a></li>
+                <li><a href="/license"><i class="icon-info-sign"></i>&nbsp;Data and Code License</a></li>
+                <li><a href="/terms"><i class="icon-star"></i>&nbsp;Terms and Conditions</a></li>
+                <li><a href="/credits"><i class="icon-star"></i>&nbsp;Credits and Disclosures</a></li>
+              </ul>
+
+          </div>
+           
+        
+          <div class="span2">
+              <ul class="nav nav-list bs-docs-sidenav affix-top">
+                <li><a target="new" href="http://twitter.com/askyourgovtin"><i class="icon-twitter"></i>&nbsp;Twitter</a></li>
+                <li><a href="/contact"><i class="icon-envelope"></i>&nbsp;Email</a></li>
+                <li><a href="/links"><i class="icon-bookmark"></i>&nbsp;Links</a></li>
+              </ul>
+
+          </div>
+ 
+        </div>
+
+
+      </div> <!-- footer container -->
+</footer>
         
         
         

@@ -1,9 +1,17 @@
 @extends('layouts.master')
 
+@section('main_title')
+    @parent
+    <h2>NammaMLA</h2>            
+@stop
+
 @section('sidebar')
     @parent
+    Name :
+    Constituency:
+    
 
-    <p>This is appended to the master sidebar.</p>
+
 @stop
 
 @section('content')
