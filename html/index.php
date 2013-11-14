@@ -45,6 +45,14 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 | and wonderful applications we have created for them.
 |
 */
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
+App::error(function(ModelNotFoundException $e)
+{
+    return Response::make('Not Found', 404);
+});
+
+
 
 $app->run();
 
@@ -60,3 +68,5 @@ $app->run();
 */
 
 $app->shutdown();
+
+
