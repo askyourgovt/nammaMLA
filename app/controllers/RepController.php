@@ -1,5 +1,6 @@
 <?php
 
+
 class RepController extends BaseController {
 
 	
@@ -9,9 +10,18 @@ class RepController extends BaseController {
 	protected $layout = 'layouts.master';
     
 	
-	public function repHomepage()
+	public function repHomepage($rep_key)
 	{
-		$this->layout->content = View::make('repHomepage');
+		$rep = Reps::where('rep_key', '=', $rep_key)->firstOrFail();
+		//You will have to get the latest and should have no end date
+		$rep_role = DB::table('rep_role')
+		    ->join('roles', 'rep_role.role_key', '=', 'roles.role_key')
+		    ->join('parties', 'rep_role.party_key', '=', 'parties.party_key')
+		    ->join('constituency', 'rep_role.constituency_key', '=', 'constituency.constituency_key')
+            ->where('rep_key', '=', $rep_key)
+            ->select('roles.role_name','parties.party_name','constituency.constituency_name','constituency.constituency_number')->first();
+            //var_dump($rep_role);
+		$this->layout->content = View::make('repHomepage',  array('rep' => $rep,'rep_role' => $rep_role) );
 	}
 
 

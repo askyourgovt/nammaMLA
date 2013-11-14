@@ -9,17 +9,15 @@
 
 @section('main_title')
     @parent
-    <h2>D.K. ShivaKumar</h2>            
-    <p class="lead">MLA (Kanakapura - 184)</p>    
+    <h2><?php echo $rep->name; ?></h2>            
+    <p class="lead"><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</p>    
 @stop
-
-
 
 @section('sidebar')
     @parent
     <center>
     <img src="/static/profile_pictures/d-k-shivakumar.jpg" style="width:250px; border-radius:10px;" />
-    <h4>MLA (Kanakapura - 184)</h4>
+    <h4><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</h4>    
     <table>
         <tr>
             <td valign="top"><b>Born</b></td><td> Karnataka (1954)</td>
