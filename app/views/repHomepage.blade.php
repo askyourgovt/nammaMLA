@@ -16,27 +16,42 @@
 @section('sidebar')
     @parent
     <center>
-    <img src="/static/profile_pictures/d-k-shivakumar.jpg" style="width:250px; border-radius:10px;" />
+     <?php if($rep->rep_picture == 'n') { ?>   
+        <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:100px;" />
+     <?php }else { ?>   
+        <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:100px;" />    
+     <?php } ?>   
+
     <h4><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</h4>    
+
     <table>
         <tr>
-            <td valign="top"><b>Born</b></td><td> Karnataka (1954)</td>
+            <td valign="top"><b>Born</b></td><td> </td>
         </tr>
         <tr>
-            <td><b>Party</b></td><td> Indian National Congress</td>
+            <td><b>Party</b></td><td> <?php echo $rep_role->party_name; ?></td>
         </tr>
         <tr>
-            <td><b>Education</b></td><td> Graduate (B.Sc)</td>
+            <td><b>Education</b></td><td> </td>
         </tr>
 
         <tr>
-            <td valign="top"><b>Address</b></td><td>No.602,KENKRERI,18th Cross, Sadashiva Nagar, <br>Bangalore-560 080.</td>
+            <td valign="top"><b>Address</b></td><td></td>
         </tr>
         <tr>
-            <td><b>Phone:</b></td><td>9845156524</td>
-
+            <td><b>Phone:</b></td><td></td>
+        </tr>
+        <tr>
+            <td><b>Email:</b></td><td></td>
+        </tr>
+        <tr>
+            <td><b>Web:</b></td><td></td>
         </tr>
     </table>
+     <?php if($rep_role->ec_affidavits == 'n') { ?>   
+        <i class="icon-download"></i> <a href="">View EC Affidavit</a>
+     <?php } ?>   
+
     </center>
 @stop
 
