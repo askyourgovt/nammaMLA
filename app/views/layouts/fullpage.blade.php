@@ -65,49 +65,41 @@
   
          <div class="container">
          <!-- Masthead
-		================================================== -->
-		<header class="jumbotron subhead" id="overview">
-		  <div class="row">
-		    <div class="span12">
-		    	<div class="span6">
-					@section('main_title')
-					@show
-				</div>
-		    </div>
-		  </div>
-		</header>
+        ================================================== -->
+        <header class="jumbotron subhead" id="overview">
+          <div class="row">
+            <div class="span12">
+                <div class="span6">
+                    @section('main_title')
+                    @show
+                </div>
+            </div>
+          </div>
+        </header>
          
          
-		<!-- main section
-		================================================== -->
-		    <div class="span3">
-		    	 <div class="well">
-
-			@section('sidebar')
-			    <!--This is the master sidebar. -->
-			@show
-			 </div>
-		    </div>
-		    <div class="span8">
+        <!-- main section
+        ================================================== -->
+            <div class="span12">
 
 
-		 
-		 
-				    @yield('content')
-		
-		  
-	            </div>
-		
-	
-	
-	
-		<br>
-
-	      
-	      </div><!-- /container -->
+         
+         
+                    @yield('content')
         
-	     <!-- Footer
-	      ================================================== -->
+          
+                </div>
+        
+    
+    
+    
+        <br>
+
+          
+          </div><!-- /container -->
+        
+         <!-- Footer
+          ================================================== -->
 <footer class="footer" >
       <div class="container">
         <div class="span12">

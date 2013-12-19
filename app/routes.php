@@ -24,5 +24,8 @@ Route::get('/rep/attendance/{rep_key}', 'RepController@repAttendance');
 Route::get('/cabinet/meetings', 'CabinetController@allMeetingsList');
 
 
+Route::get('/assembly/{assembly_key}', 'AssemblyController@assemblyMembersList');
+
+
 Route::get('/api/rep/{rep_key}/attendance/csv', 'ApiCsvController@apiRepAllAttendanceCSV');
 

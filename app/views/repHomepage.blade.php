@@ -17,9 +17,9 @@
     @parent
     <center>
      <?php if($rep->rep_picture == 'n') { ?>   
-        <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:100px;" />
+        <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:200px;" />
      <?php }else { ?>   
-        <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:100px;" />    
+        <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:225px;" />    
      <?php } ?>   
 
     <h4><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</h4>    

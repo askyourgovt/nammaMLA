@@ -7,22 +7,10 @@
 
 @section('sidebar')
     @parent
-    Name :
-    Constituency:
-    
-
+Side bar
 
 @stop
 
 @section('content')
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
-        <p>This is my body content.</p>
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
-    <p>This is my body content.</p>
+
 @stop
