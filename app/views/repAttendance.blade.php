@@ -10,15 +10,17 @@
         .day {
           fill: #fff;
           stroke: #ccc;
+          stroke-width: 1.2px;
+
         }
 
         .month {
           fill: none;
           stroke: #000;
-          stroke-width: 2px;
+          stroke-width: 1.2px;
         }
 
-        .RdYlGn .q0-11{fill:rgb(165,0,38)}
+        .RdYlGn .q0-11{fill:rgb(255,0,0)}
         .RdYlGn .q1-11{fill:rgb(0,104,55)}
         .RdYlGn .q2-11{fill:rgb(255,255,191)}
 </style>
@@ -139,10 +141,10 @@ svg.selectAll(".month")
     .attr("class", "month")
     .attr("d", monthPath);
 
-d3.csv("/static/test.csv", function(error, csv) {
+d3.csv("/api/rep/<?php echo $rep->rep_key; ?>/attendance/csv", function(error, csv) {
   var data = d3.nest()
     .key(function(d) { return d.Date; })
-    .rollup(function(d) {  if(d[0].Attendance == 'P'){ return 1; } else if(d[0].Attendance == 'A'){ return 0 ;}else{ return 2;} })
+    .rollup(function(d) {  console.log("'"+d[0].Attendance+"'"); if(d[0].Attendance == 'P'){ return 1; } else if(d[0].Attendance == 'A'){ return 0 ;}else{ return 2;} })
     .map(csv);
 
   rect.filter(function(d) { return d in data; })

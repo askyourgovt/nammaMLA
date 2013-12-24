@@ -6,12 +6,20 @@ class ApiCsvController extends BaseController {
 	/**
 	* The layout that should be used for responses.
 	*/
-	protected $layout = 'layouts.master';
+	protected $layout = 'layouts.apilayout';
     
 	
-	public function apiRepAllAttendanceCSV()
+	public function apiRepAllAttendanceCSV($rep_key)
 	{
-		$this->layout->content = View::make('apiCSV');
+
+		$results = DB::table('attendance')
+            ->where('rep_key', '=', $rep_key)
+            ->select('session_date','attendance')->get();
+	
+
+
+        $this->layout->content = View::make('apiCSV',  array('results' => $results) );
+
 	}
 
 }
