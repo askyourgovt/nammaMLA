@@ -21,22 +21,22 @@
      <?php }else { ?>   
         <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:225px;" />    
      <?php } ?>   
-
+    <h4><a href="/rep/<?php echo $rep->rep_key; ?>"><?php echo $rep->name; ?></a></h4>
     <h4><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</h4>    
 
     <table>
         <tr>
-            <td valign="top"><b>Born</b></td><td> </td>
+            <td ><b>Born:</b></td><td> </td>
         </tr>
         <tr>
-            <td><b>Party</b></td><td> <?php echo $rep_role->party_name; ?></td>
+            <td><b>Party:</b></td><td> <?php echo $rep_role->party_name; ?></td>
         </tr>
         <tr>
-            <td><b>Education</b></td><td> </td>
+            <td><b>Education:</b></td><td> </td>
         </tr>
 
         <tr>
-            <td valign="top"><b>Address</b></td><td></td>
+            <td><b>Address:</b></td><td></td>
         </tr>
         <tr>
             <td><b>Phone:</b></td><td></td>
@@ -47,17 +47,23 @@
         <tr>
             <td><b>Web:</b></td><td></td>
         </tr>
-    </table>
+        <tr>
+            <td colspan=2><i class="icon-calendar"></i> <a href="/rep/attendance/<?php echo $rep->rep_key; ?>">Detailed Attendance Sheet</a></td>
+        </tr>
+
      <?php if($rep_role->ec_affidavits == 'n') { ?>   
-        <i class="icon-download"></i> <a href="">View EC Affidavit</a>
-     <?php } ?>   
+        <tr>
+            <td colspan=2><i class="icon-download"></i> <a href="">EC Affidavit</a></td>
+        </tr>
+     <?php } ?>
+    </table>
+        
 
     </center>
 @stop
 
 @section('content')
     <row>
-        <p>D. K. Shivakumar is a politician from Karnataka.He belongs to Vokalliga community. He is Congress MLA from Kanakapura consitituency.</p>
     </row>
     <row>
         <h2>Session Attendance</h2>

@@ -19,16 +19,8 @@
         }
 
         .RdYlGn .q0-11{fill:rgb(165,0,38)}
-        .RdYlGn .q1-11{fill:rgb(215,48,39)}
-        .RdYlGn .q2-11{fill:rgb(244,109,67)}
-        .RdYlGn .q3-11{fill:rgb(253,174,97)}
-        .RdYlGn .q4-11{fill:rgb(254,224,139)}
-        .RdYlGn .q5-11{fill:rgb(255,255,191)}
-        .RdYlGn .q6-11{fill:rgb(217,239,139)}
-        .RdYlGn .q7-11{fill:rgb(166,217,106)}
-        .RdYlGn .q8-11{fill:rgb(102,189,99)}
-        .RdYlGn .q9-11{fill:rgb(26,152,80)}
-        .RdYlGn .q10-11{fill:rgb(0,104,55)}
+        .RdYlGn .q1-11{fill:rgb(0,104,55)}
+        .RdYlGn .q2-11{fill:rgb(255,255,191)}
 </style>
 <script src="/static/d3/d3.min.js"></script>
 @stop
@@ -37,8 +29,8 @@
 
 @section('main_title')
     @parent
-    <h2>D.K. ShivaKumar</h2>            
-    <p class="lead">Attendance Sheet</p>    
+    <h2><?php echo $rep->name; ?></h2>            
+    <p class="lead"><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</p>    
 @stop
 
 
@@ -46,30 +38,51 @@
 @section('sidebar')
     @parent
     <center>
+     <?php if($rep->rep_picture == 'n') { ?>   
+        <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:200px;" />
+     <?php }else { ?>   
+        <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:225px;" />    
+     <?php } ?>   
+    <h4><a href="/rep/<?php echo $rep->rep_key; ?>"><?php echo $rep->name; ?></a></h4>
+    <h4><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</h4>    
 
-    <img src="/static/profile_pictures/d-k-shivakumar.jpg" style="width:250px; border-radius:10px;" />
-    <h4>MLA (Kanakapura - 184)</h4>
     <table>
-        <tr> <td colspan=2> </td></tr>
         <tr>
-            <td valign="top"><b>Born</b></td><td> Karnataka (1954)</td>
+            <td ><b>Born:</b></td><td> </td>
         </tr>
         <tr>
-            <td><b>Party</b></td><td> Indian National Congress</td>
+            <td><b>Party:</b></td><td> <?php echo $rep_role->party_name; ?></td>
         </tr>
         <tr>
-            <td><b>Education</b></td><td> Graduate (B.Sc)</td>
+            <td><b>Education:</b></td><td> </td>
         </tr>
 
         <tr>
-            <td valign="top"><b>Address</b></td><td>No.602,KENKRERI,18th Cross, Sadashiva Nagar, <br>Bangalore-560 080.</td>
+            <td><b>Address:</b></td><td></td>
         </tr>
         <tr>
-            <td><b>Phone:</b></td><td>9845156524</td>
-
+            <td><b>Phone:</b></td><td></td>
         </tr>
+        <tr>
+            <td><b>Email:</b></td><td></td>
+        </tr>
+        <tr>
+            <td><b>Web:</b></td><td></td>
+        </tr>
+        <tr>
+            <td colspan=2><i class="icon-calendar"></i> <a href="/rep/attendance/<?php echo $rep->rep_key; ?>">Detailed Attendance Sheet</a></td>
+        </tr>
+
+     <?php if($rep_role->ec_affidavits == 'n') { ?>   
+        <tr>
+            <td colspan=2><i class="icon-download"></i> <a href="">EC Affidavit</a></td>
+        </tr>
+     <?php } ?>
     </table>
+        
+
     </center>
+
 @stop
 
 @section('content')
@@ -81,17 +94,20 @@
     height = 136,
     cellSize = 17; // cell size
 
+var    attendance = ['Absent','Present','N.A']
+
 var day = d3.time.format("%w"),
     week = d3.time.format("%U"),
     percent = d3.format(".1%"),
     format = d3.time.format("%Y-%m-%d");
 
 var color = d3.scale.quantize()
-    .domain([-.05, .05])
-    .range(d3.range(11).map(function(d) { return "q" + d + "-11"; }));
+    .domain([0, 2])
+    .range(d3.range(3).map(function(d) { return "q" + d + "-11"; }));
+
 
 var svg = d3.select("row").selectAll("svg")
-    .data(d3.range(2009, 2011))
+    .data(d3.range(2013,2014))
   .enter().append("svg")
     .attr("width", width)
     .attr("height", height)
@@ -126,13 +142,13 @@ svg.selectAll(".month")
 d3.csv("/static/test.csv", function(error, csv) {
   var data = d3.nest()
     .key(function(d) { return d.Date; })
-    .rollup(function(d) { return (d[0].Close - d[0].Open) / d[0].Open; })
+    .rollup(function(d) {  if(d[0].Attendance == 'P'){ return 1; } else if(d[0].Attendance == 'A'){ return 0 ;}else{ return 2;} })
     .map(csv);
 
   rect.filter(function(d) { return d in data; })
       .attr("class", function(d) { return "day " + color(data[d]); })
     .select("title")
-      .text(function(d) { return d + ": " + percent(data[d]); });
+      .text(function(d) { return d + ": " + attendance[data[d]] ; });
 });
 
 function monthPath(t0) {
