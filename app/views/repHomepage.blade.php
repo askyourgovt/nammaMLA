@@ -48,12 +48,12 @@
             <td><b>Web:</b></td><td></td>
         </tr>
         <tr>
-            <td colspan=2><i class="icon-calendar"></i> <a href="/rep/attendance/<?php echo $rep->rep_key; ?>">Detailed Attendance Sheet</a></td>
+            <td colspan=2><i class="icon-calendar"></i> <a href="/rep/attendance/{{ $rep->rep_key }}">Detailed Attendance Sheet</a></td>
         </tr>
 
-     <?php if($rep_role->ec_affidavits == 'n') { ?>   
+     <?php if($rep_role->ec_affidavits != 'n') { ?>   
         <tr>
-            <td colspan=2><i class="icon-download"></i> <a href="">EC Affidavit</a></td>
+            <td colspan=2><i class="icon-download"></i> <a href="/document/view/{{ $rep_role->ec_affidavits }}">EC Affidavit</a></td>
         </tr>
      <?php } ?>
     </table>

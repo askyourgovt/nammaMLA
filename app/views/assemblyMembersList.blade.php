@@ -21,6 +21,7 @@
         <td>Representative</td>
         <td>Party</td>
         <td>Role</td>
+        <td>Constituency Code</td>
         <td>Constituency Name</td>
     </thead>
     <tbody>
@@ -29,7 +30,8 @@
             <td><a href="/rep/{{ $rep->rep_key }}">{{ $rep->name }}</a></td>
             <td>{{ $rep->role_name }}</td>
             <td>{{ $rep->party_name }}</td>
-            <td>{{ $rep->constituency_name }}&nbsp;({{ $rep->constituency_number }})</td>
+            <td>{{ $rep->constituency_number }}</td>
+            <td>{{ $rep->constituency_name }}</td>
         </tr>
         @endforeach
     </tbody>
