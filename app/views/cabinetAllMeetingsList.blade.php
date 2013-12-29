@@ -35,36 +35,36 @@
             <tr>
                 <td> May 2013 </td>
                 <td> 10</td>
-                <td> <a href="">Download</a></td>
-                <td></td>
+                <td> <a href="/document/view/en_cabinet_mom_may2013">View</a></td>
+                <td> <a href="/document/view/kn_cabinet_mom_may2013">View</a></td>
             </tr> 
 
             <tr>
                 <td> Jun 2013 </td>
                 <td></td>                
-                <td> <a href="">Download</a></td>
-                <td></td>
+                <td> <a href="/document/view/en_cabinet_mom_jun2013">View</a></td>
+                <td> <a href="/document/view/kn_cabinet_mom_jun2013">View</a></td>
             </tr>    
             
             <tr>
                 <td> Jul 2013 </td>
                 <td></td>                
-                <td> <a href="">Download</a></td>
-                <td></td>
+                <td> <a href="/document/view/en_cabinet_mom_jul2013">View</a></td>
+                <td> <a href="/document/view/kn_cabinet_mom_jul2013">View</a></td>
             </tr>    
             
             <tr>
                 <td> Aug 2013 </td>
                 <td></td>                
-                <td> <a href="">Download</a></td>
-                <td></td>
+                <td> <a href="/document/view/en_cabinet_mom_aug2013">View</a></td>
+                <td> <a href="/document/view/kn_cabinet_mom_aug2013">View</a></td>
             </tr>    
 
             <tr>
                 <td> Sep 2013 </td>
                 <td></td>
-                <td> <a href="">Download</a></td>
-                <td></td>
+                <td> <a href="/document/view/en_cabinet_mom_sep2013">View</a></td>
+                <td> <a href="/document/view/kn_cabinet_mom_sep2013">View</a></td>
             </tr>    
 
      </tbody>
