@@ -25,7 +25,7 @@
        
 
          <tr>
-            <td><a href="{{ $document->document_url }}"><i class="icon-download-alt"></i> Download</a>&nbsp;<span class="label label-warning"><?=$document['document_file_type']?></span>
+            <td><a href="http://docs.nammamla.org.s3.amazonaws.com/{{ $document->document_url }}"><i class="icon-download-alt"></i> Download</a>&nbsp;<span class="label label-warning"><?=$document['document_file_type']?></span>
             </td>
         </tr>
       </tbody>
@@ -47,7 +47,7 @@
     </tr>                  
       <script type="text/javascript" src="/static/pdf/pdf.js"></script>
       <script type="text/javascript">
-          var url = '/static/example_docs/{{ $document->document_url }}';
+          var url = 'http://docs.nammamla.org.s3.amazonaws.com/{{ $document->document_url }}';
       </script>  
       <script type="text/javascript" src="/static/pdf/pdfview.js"></script>
     @endif
@@ -56,7 +56,7 @@
 
     @if ($document->document_format == "jpg" or $document->document_format == "png")
        <tr>
-        <td  colspan=2><img style="border:1px solid black" src="{{ $document->document_url }}" width="600px"></td>
+        <td  colspan=2><img style="border:1px solid black" src="http://docs.nammamla.org.s3.amazonaws.com/{{ $document->document_url }}" width="600px"></td>
       </tr>
     @endif
 
