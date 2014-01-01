@@ -41,7 +41,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cabinet<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/cabinet/meetings">Meetings</a></li>
+                  <li><a href="/cabinet/agenda/fourteenth_kar_leg_assembly">Agenda of Meetings</a></li>
                 </ul>
                </li>
 
