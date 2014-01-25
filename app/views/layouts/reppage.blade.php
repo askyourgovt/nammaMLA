@@ -80,15 +80,9 @@
          
         <!-- main section
         ================================================== -->
-            <div class="span12">
-
-
-         
-         
-                    @yield('content')
-        
-          
-                </div>
+            <div class="span12">                  
+                    @yield('content')          
+            </div>
         
     
     

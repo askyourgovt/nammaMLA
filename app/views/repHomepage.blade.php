@@ -13,17 +13,22 @@
     <p class="lead"><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</p>    
 @stop
 
-@section('sidebar')
-    @parent
-    <center>
-     <?php if($rep->rep_picture == 'n') { ?>   
-        <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:200px;" />
-     <?php }else { ?>   
-        <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:225px;" />    
-     <?php } ?>   
-    <h4><a href="/rep/<?php echo $rep->rep_key; ?>"><?php echo $rep->name; ?></a></h4>
-    <h4><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</h4>    
 
+@section('content')
+<ul class="nav nav-tabs">
+  <li class="active"><a href="/rep/{{ $rep->rep_key }}" ><i class="icon-home"></i> Home</a></li>
+  <li><a href="/rep/{{ $rep->rep_key }}/attendance" ><i class="icon-calendar"></i> Attendance</a></li>
+  <li><a href="/rep/{{ $rep->rep_key }}/questions" ><i class="icon-question"></i> Questions</a></li>
+</ul>
+<div class="row">
+    <div class="span4">
+         <?php if($rep->rep_picture == 'n') { ?>   
+            <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:200px;" />
+         <?php }else { ?>   
+            <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:225px;" />    
+         <?php } ?>   
+    </div>
+    <div class="span7">
     <table>
         <tr>
             <td ><b>Born:</b></td><td> </td>
@@ -47,9 +52,6 @@
         <tr>
             <td><b>Web:</b></td><td></td>
         </tr>
-        <tr>
-            <td colspan=2><i class="icon-calendar"></i> <a href="/rep/attendance/{{ $rep->rep_key }}">Detailed Attendance Sheet</a></td>
-        </tr>
 
      <?php if($rep_role->ec_affidavits != 'n') { ?>   
         <tr>
@@ -57,17 +59,13 @@
         </tr>
      <?php } ?>
     </table>
-        
+    </div>
+</div>
 
-    </center>
-@stop
 
-@section('content')
-    <row>
-    </row>
-    <row>
-        <h2>Session Attendance</h2>
-        <div class="span4">
+<div class="row">
+        <h3>Attendance Highlights</h3>
+        <div class="span3">
             <h4>Recent Session Attendance</h4>
             <canvas id="last_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
 
@@ -76,13 +74,27 @@
             <h4>Overall Session Attendance</h4>
             <canvas id="overall_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
         </div>
-    </row>
-    <row>
-        <div class="span4">
+        <div class="span3">
          <h4>Relative Attendance</h4>
         <canvas id="comparison_barcharts" data-type="Bar" width="500" height="250"></canvas>
         </div>
-    </row>
+</div>
+<div class="row">
+        <h3>Questions Highlights</h3>
+        <div class="span3">
+            <h4>Recent Number Questions</h4>
+            <canvas id="last_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
+
+        </div>
+        <div class="span3">
+            <h4>Overall Number Questions</h4>
+            <canvas id="overall_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
+        </div>
+        <div class="span3">
+         <h4>Relative Number Questions</h4>
+        <canvas id="comparison_barcharts" data-type="Bar" width="500" height="250"></canvas>
+        </div>
+</div>
 
     <script>
 var ctx1 = document.getElementById("last_session_attendance").getContext("2d");

@@ -69,7 +69,7 @@
 		<header class="jumbotron subhead" id="overview">
 		  <div class="row">
 		    <div class="span12">
-		    	<div class="span6">
+		    	<div class="span8">
 					@section('main_title')
 					@show
 				</div>

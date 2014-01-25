@@ -18,7 +18,8 @@ Route::get('/license', 'StaticPagesController@licensePage');
 
 
 Route::get('/rep/{rep_key}', 'RepController@repHomepage');
-Route::get('/rep/attendance/{rep_key}', 'RepController@repAttendance');
+Route::get('/rep/{rep_key}/attendance', 'RepController@repAttendance');
+Route::get('/rep/{rep_key}/questions', 'RepController@repQuestions');
 
 
 Route::get('/cabinet/agenda/fourteenth_kar_leg_assembly', 'CabinetController@allMeetingsList');
