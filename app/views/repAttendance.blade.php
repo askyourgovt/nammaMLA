@@ -22,7 +22,7 @@
 
         .RdYlGn .q0-11{fill:rgb(255,0,0)}
         .RdYlGn .q1-11{fill:rgb(0,104,55)}
-        .RdYlGn .q2-11{fill:rgb(255,255,191)}
+        .RdYlGn .q2-11{fill:rgb(255,255,0)}
 </style>
 <script src="/static/d3/d3.min.js"></script>
 @stop
@@ -124,7 +124,18 @@
             d3.select(self.frameElement).style("height", "2910px");
     </script>
 
-
 </row>
+<br><br>
+<div class="row">
+    <table border=1>
+        <tr>
+          <td width="100px">No session</td>
+          <td width="100px" bgcolor="green">Present</td>
+          <td width="100px" bgcolor="red">Absent</td>
+          <td width="100px" bgcolor="yellow">Not Applicable</td>          
+        </tr>
+    </table>
+</div>
+
 
 @stop
