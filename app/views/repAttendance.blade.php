@@ -101,7 +101,7 @@ svg.selectAll(".month")
 d3.csv("/api/rep/<?php echo $rep->rep_key; ?>/attendance/csv", function(error, csv) {
   var data = d3.nest()
     .key(function(d) { return d.Date; })
-    .rollup(function(d) {  console.log("'"+d[0].Attendance+"'"); if(d[0].Attendance == 'P'){ return 1; } else if(d[0].Attendance == 'A'){ return 0 ;}else{ return 2;} })
+    .rollup(function(d) {  console.log("'"+d[0].Attendance+"'"); if(d[0].Attendance == 'p'){ return 1; } else if(d[0].Attendance == 'a'){ return 0 ;}else{ return 2;} })
     .map(csv);
 
   rect.filter(function(d) { return d in data; })
