@@ -28,6 +28,7 @@
         <td>Assembly</td>
         <td>Session</td>
         <td>Date</td>
+        <td>Department</td>      
         <td>Type</td>
         <td>Question Subject</td>
     </thead>
@@ -37,7 +38,14 @@
             <td>{{ $q->assembly_name }}</td>
             <td>{{ $q->session_name }}</td>
             <td>{{ $q->asked_date }}</td>
-            <td>{{ $q->question_type }}</td>
+            <td>{{ $q->dept_name }}</td>            
+            <td>
+              @if ($q->question_type === 'S')
+                <span data-toggle="tooltip" title="Starred questions">S</span>
+              @else
+                <span data-toggle="tooltip" title="Unstarred questions">S</span>
+              @endif
+            </td>
             <td>{{ $q->question }}</td>
         </tr>
         @endforeach
@@ -48,11 +56,56 @@
     $(document).ready(function() {
         var oTable = $('#data_table').dataTable(
         {   
-            "iDisplayLength": 15,
-            "sPaginationType": "full_numbers"
+            "iDisplayLength": 25,
+            "sPaginationType": "full_numbers",
+            "aoColumnDefs": [
+            { "bVisible": false, "aTargets": [ 0 ] }
+            ],
+            "aaSortingFixed": [[ 0, 'asc' ]],
+            "aaSorting": [[ 1, 'asc' ]],
+            "sDom": 'lfr<"giveHeight"t>ip',
+            "fnDrawCallback": function ( oSettings ) {
+                if ( oSettings.aiDisplay.length == 0 )
+                {
+                    return;
+                }
+
+
+            
+
+                var nTrs = $('#data_table tbody tr');
+                var iColspan = nTrs[0].getElementsByTagName('td').length;
+                var sLastGroup = "";
+                for ( var i=0 ; i<nTrs.length ; i++ )
+                {
+                    var iDisplayIndex = oSettings._iDisplayStart + i;
+                    var sGroup = oSettings.aoData[ oSettings.aiDisplay[iDisplayIndex] ]._aData[0];
+                    if ( sGroup != sLastGroup )
+                    {
+                        var nGroup = document.createElement( 'tr' );
+                        var nCell = document.createElement( 'td' );
+                        nCell.colSpan = iColspan;
+                        nCell.className = "group";
+                        nCell.innerHTML = "<b>Assembly: "+sGroup+"</b>";
+                        nGroup.appendChild( nCell );
+                        nTrs[i].parentNode.insertBefore( nGroup, nTrs[i] );
+                        sLastGroup = sGroup;
+                    }
+                }
+
+
+
+            }//fndrawcallback
+
+
+
+
         }
-            );
-        oTable.fnSort( [ [0,'asc'] ] );
+        
+
+        );
+
+
     } );
 </script>
    

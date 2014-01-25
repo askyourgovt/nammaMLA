@@ -29,28 +29,22 @@
          <?php } ?>   
     </div>
     <div class="span7">
-    <table>
+    <table class="table table-hover">
         <tr>
-            <td ><b>Born:</b></td><td> </td>
+            <td><b>Party</b></td><td> <?php echo $rep_role->party_name; ?></td>
         </tr>
         <tr>
-            <td><b>Party:</b></td><td> <?php echo $rep_role->party_name; ?></td>
+            <td><b>Education</b></td><td><?php echo $rep->qualification; ?></td>
         </tr>
         <tr>
-            <td><b>Education:</b></td><td> </td>
-        </tr>
-
-        <tr>
-            <td><b>Address:</b></td><td></td>
-        </tr>
-        <tr>
-            <td><b>Phone:</b></td><td></td>
-        </tr>
-        <tr>
-            <td><b>Email:</b></td><td></td>
-        </tr>
-        <tr>
-            <td><b>Web:</b></td><td></td>
+            <td><b>Gender</b></td>
+            <td>
+                @if ($rep->gender === 'm')
+                    Male
+                @else
+                    Female
+                @endif
+            </td>
         </tr>
 
      <?php if($rep_role->ec_affidavits != 'n') { ?>   
@@ -58,6 +52,7 @@
             <td colspan=2><i class="icon-download"></i> <a href="/document/view/{{ $rep_role->ec_affidavits }}">EC Affidavit</a></td>
         </tr>
      <?php } ?>
+        <tr><td colspan=2>&nbsp;</td></tr>
     </table>
     </div>
 </div>
@@ -91,7 +86,7 @@
             <canvas id="overall_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
         </div>
         <div class="span3">
-         <h4>Relative Number Questions</h4>
+         <h4>Relative Number of Questions</h4>
         <canvas id="comparison_barcharts" data-type="Bar" width="500" height="250"></canvas>
         </div>
 </div>
