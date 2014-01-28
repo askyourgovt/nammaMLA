@@ -126,8 +126,8 @@
 
 </row>
 <br><br>
-<div class="row">
-    <table border=1>
+<row>
+    <table border=1 cellpadding="5">
         <tr>
           <td width="100px">No session</td>
           <td width="100px" bgcolor="green">Present</td>
@@ -135,7 +135,7 @@
           <td width="100px" bgcolor="yellow">Not Applicable</td>          
         </tr>
     </table>
-</div>
+</row>
 
 
 @stop
