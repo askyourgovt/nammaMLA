@@ -107,7 +107,7 @@ var data = [
     },
     {
         value : 100,
-        color : "#D4CCC5"
+        color : "#FFFF00"
     }
 
 ];
