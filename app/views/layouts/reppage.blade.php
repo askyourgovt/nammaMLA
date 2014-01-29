@@ -48,7 +48,6 @@
                 </ul>
                </li>
 
-             <li><a href="">Questions</a></li>  
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
                 <ul class="dropdown-menu">

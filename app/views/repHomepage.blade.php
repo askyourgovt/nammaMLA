@@ -10,7 +10,7 @@
 @section('main_title')
     @parent
     <h2><?php echo $rep->name; ?></h2>            
-    <p class="lead"><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</p>    
+    <p class="lead"></p>    
 @stop
 
 
@@ -23,13 +23,34 @@
 <div class="row">
     <div class="span4">
          <?php if($rep->rep_picture == 'n') { ?>   
-            <img src="/static/profile_pictures/rep_picture.jpg" style="width:225px; border-radius:200px;" />
+            <img src="/static/profile_pictures/rep_picture.jpg" style="width:125px; border-radius:200px;" />
          <?php }else { ?>   
-            <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:225px; border-radius:225px;" />    
+            <img src="/static/profile_pictures/<?php echo $rep->rep_key; ?>.jpg" style="width:200px; border-radius:225px;" />    
          <?php } ?>   
     </div>
     <div class="span7">
     <table class="table table-hover">
+        <tr>
+            <td><b>Role</b></td>
+            <td>
+                <?php echo $rep_role->role_name; ?> 
+                @if ($rep_role->end == '9999-12-31')
+                    <?php
+                        $seconds = strtotime($rep_role->start);
+                    ?>
+                    - In office since {{date('d-M-Y', $seconds);}}
+                @else
+                    <?php
+                        $seconds = strtotime($rep_role->end);
+                    ?>
+                    - Term ended on {{date('d-M-Y', $seconds);}}
+                @endif
+
+            </td>
+        </tr>
+        <tr>
+            <td><b>Constituency</b></td><td> <?php echo $rep_role->constituency_name; ?>  (<?php echo $rep_role->constituency_number; ?>) - <?php echo $rep_role->assembly_name; ?> </td>
+        </tr>
         <tr>
             <td><b>Party</b></td><td> <?php echo $rep_role->party_name; ?></td>
         </tr>
@@ -49,7 +70,7 @@
 
      <?php if($rep_role->ec_affidavits != 'n') { ?>   
         <tr>
-            <td colspan=2><i class="icon-download"></i> <a href="/document/view/{{ $rep_role->ec_affidavits }}">EC Affidavit</a></td>
+            <td colspan=2><i class="icon-book"></i>&nbsp;<a href="/document/view/{{$rep_role->assembly_key}}_{{$rep_role->constituency_number}}">View EC Affidavit</a></td>
         </tr>
      <?php } ?>
         <tr><td colspan=2>&nbsp;</td></tr>
@@ -70,7 +91,7 @@
                 @elseif ($att->attendance == 'p')
                         Present: {{$att->attendance_count}}
                 @else
-                        N.A: {{$att->attendance_count}}
+                        Not Applicable: {{$att->attendance_count}}
                 @endif 
             @endforeach
             </center>
@@ -85,7 +106,7 @@
                 @elseif ($att->attendance == 'p')
                         Present: {{$att->attendance_count}}
                 @else
-                        N.A: {{$att->attendance_count}}
+                        Not Applicable: {{$att->attendance_count}}
                 @endif 
             @endforeach
             </center>
