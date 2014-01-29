@@ -13,11 +13,13 @@
 <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="/static/bootstrap/css/bootstrap_spacelab.css" rel="stylesheet">
 <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
-<link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
+<link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="/static/namma.css" rel="stylesheet">
+
 <script src="/static/jqueryui/js/jquery-1.9.1.js"></script>
 <script src="/static/bootstrap/js/bootstrap.js"></script>
-<link rel="stylesheet" href="/static/namma.css">
 <script src="/static/typeahead.min.js"></script>
+
 @section('header_section')
 @show
 
@@ -96,9 +98,7 @@
 		 
 		 
 				    @yield('content')
-		
-		  <input class="example-arabic typeahead tt-query" type="text"  placeholder="Search" autocomplete="off" spellcheck="false" />
-
+		<input type="text" class="example-arabic typeahead tt-query"  >
 	            </div>
 		
 	
@@ -148,15 +148,8 @@
 
 <script>
 $('.example-arabic').typeahead({
-  name: 'arabic',
-  local: [
-    "Thej",
-    "Thejesh",
-    "Rajesh",
-    "Raj",
-    "Lak",
-    "Kum"
-  ]
+  name: 'MLA Search Keys',
+  prefetch: 'http://localhost:8000/api/generic/search_keys/json',
 });</script>
         
 <!-- AddThis Smart Layers BEGIN -->

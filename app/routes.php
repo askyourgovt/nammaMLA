@@ -29,6 +29,7 @@ Route::get('/assembly/{assembly_key}', 'AssemblyController@assemblyMembersList')
 
 
 Route::get('/api/rep/{rep_key}/attendance/csv', 'ApiCsvController@apiRepAllAttendanceCSV');
+Route::get('/api/generic/search_keys/json', 'ApiCsvController@apiSearchKeysJSON');
 
 Route::get('/document/view/{document_key}', 'DocumentController@viewDocument');
 

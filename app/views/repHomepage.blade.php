@@ -99,12 +99,12 @@
 <div class="row">
         <h3>Questions Highlights</h3>
         <div class="span3">
-            <h4>Recent Number Questions</h4>
+            <h4>Recent Session Questions</h4>
             <canvas id="last_session_attendance" data-type="Pie" width="250" height="250"></canvas>
 
         </div>
         <div class="span3">
-            <h4>Overall Number Questions</h4>
+            <h4>Overall Questions</h4>
             <canvas id="overall_session_attendance" data-type="Pie" width="250" height="250"></canvas>
         </div>
         <div class="span3">
@@ -205,7 +205,7 @@ var options = {
                 };
 new Chart(ctx1).Doughnut(attendance_session,options);
 new Chart(ctx2).Doughnut(attendance_overall);
-new Chart(ctx3).Bar(data2);
+//new Chart(ctx3).Bar(data2);
 
     </script>
 
