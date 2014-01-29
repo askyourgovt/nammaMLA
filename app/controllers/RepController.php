@@ -19,9 +19,38 @@ class RepController extends BaseController {
 		    ->join('parties', 'rep_role.party_key', '=', 'parties.party_key')
 		    ->join('constituency', 'rep_role.constituency_key', '=', 'constituency.constituency_key')
             ->where('rep_key', '=', $rep_key)
-            ->select('roles.role_name','parties.party_name','constituency.constituency_name','constituency.constituency_number','parties.party_name','rep_role.ec_affidavits')->first();
+            ->orderBy('end', 'desc')
+            ->select('roles.role_name','parties.party_name','constituency.constituency_name','constituency.constituency_number','parties.party_name','rep_role.ec_affidavits','rep_role.assembly_key')->first();
             //var_dump($rep_role);
-		$this->layout->content = View::make('repHomepage',  array('rep' => $rep,'rep_role' => $rep_role) );
+
+            //last assembly
+            $assembly_key = $rep_role->assembly_key;
+
+            //last session of the assembly
+		$sessions = DB::table('sessions')
+            ->where('assembly_key', '=', $assembly_key)
+            ->orderBy('end', 'desc')
+            ->select('sessions.key','sessions.total_working_days','sessions.average_attendance')->first();
+
+
+            $session_key = $sessions->key;
+
+		$attendance_session = DB::table('attendance')
+            ->where('rep_key', '=', $rep_key)
+            ->where('session_key', '=', $session_key)
+            ->groupBy('attendance')
+            ->orderBy('attendance','desc')            
+            ->select(DB::raw('count(attendance) as attendance_count, attendance'))->get();
+
+		$attendance_overall = DB::table('attendance')
+            ->where('rep_key', '=', $rep_key)
+            ->groupBy('attendance')            
+            ->orderBy('attendance','desc')            
+            ->select(DB::raw('count(attendance) as attendance_count, attendance'))->get();
+
+            //var_dump($attendance_session);
+
+		$this->layout->content = View::make('repHomepage',  array('rep' => $rep,'rep_role' => $rep_role,'attendance_session' => $attendance_session, 'attendance_overall' => $attendance_overall) );
 	}
 
 
@@ -34,8 +63,11 @@ class RepController extends BaseController {
 		    ->join('parties', 'rep_role.party_key', '=', 'parties.party_key')
 		    ->join('constituency', 'rep_role.constituency_key', '=', 'constituency.constituency_key')
             ->where('rep_key', '=', $rep_key)
+            ->orderBy('end', 'asc')
             ->select('roles.role_name','parties.party_name','constituency.constituency_name','constituency.constituency_number','parties.party_name','rep_role.ec_affidavits')->first();
-            //var_dump($rep_role);
+        //get the latest session and his attendance
+
+        //var_dump($rep_role);
 		$this->layout->content = View::make('repAttendance',  array('rep' => $rep,'rep_role' => $rep_role) );
 	}
 

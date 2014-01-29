@@ -62,12 +62,34 @@
         <h3>Attendance Highlights</h3>
         <div class="span3">
             <h4>Recent Session Attendance</h4>
-            <canvas id="last_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
-
+            <canvas id="last_session_attendance" data-type="Pie" width="250" height="250"></canvas>
+            <center>
+            @foreach ($attendance_session as $att)
+                @if ($att->attendance == 'a')
+                        Absent: {{$att->attendance_count}}
+                @elseif ($att->attendance == 'p')
+                        Present: {{$att->attendance_count}}
+                @else
+                        N.A: {{$att->attendance_count}}
+                @endif 
+            @endforeach
+            </center>
         </div>
         <div class="span3">
-            <h4>Overall Session Attendance</h4>
-            <canvas id="overall_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
+            <h4>Overall Attendance</h4>
+            <canvas id="overall_session_attendance" data-type="Pie" width="250" height="250"></canvas>
+            <center>
+            @foreach ($attendance_overall as $att)
+                @if ($att->attendance == 'a')
+                        Absent: {{$att->attendance_count}}
+                @elseif ($att->attendance == 'p')
+                        Present: {{$att->attendance_count}}
+                @else
+                        N.A: {{$att->attendance_count}}
+                @endif 
+            @endforeach
+            </center>
+
         </div>
         <div class="span3">
          <h4>Relative Attendance</h4>
@@ -78,12 +100,12 @@
         <h3>Questions Highlights</h3>
         <div class="span3">
             <h4>Recent Number Questions</h4>
-            <canvas id="last_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
+            <canvas id="last_session_attendance" data-type="Pie" width="250" height="250"></canvas>
 
         </div>
         <div class="span3">
             <h4>Overall Number Questions</h4>
-            <canvas id="overall_session_attendance" data-type="Doughnut" width="250" height="250"></canvas>
+            <canvas id="overall_session_attendance" data-type="Pie" width="250" height="250"></canvas>
         </div>
         <div class="span3">
          <h4>Relative Number of Questions</h4>
@@ -96,21 +118,71 @@ var ctx1 = document.getElementById("last_session_attendance").getContext("2d");
 var ctx2 = document.getElementById("overall_session_attendance").getContext("2d");
 var ctx3 = document.getElementById("comparison_barcharts").getContext("2d");
 
-var data = [
-    {
-        value: 30,
-        color:"#F7464A"
-    },
-    {
-        value : 50,
-        color : "#00FE00"
-    },
-    {
-        value : 100,
-        color : "#FFFF00"
-    }
+var attendance_session = [
+        @foreach ($attendance_session as $att)
+            @if ($att->attendance == 'a')
+                {
+                    value: {{$att->attendance_count}},
+                    color:"#F7464A",
+                    //labelColor : '#444',
+                    //labelFontSize : '1em',
+                    //label:"Absent ("+{{$att->attendance_count}}+")"
+                },
+            @elseif ($att->attendance == 'p')
+                {
+                    value: {{$att->attendance_count}},
+                    color:"#00FE00",
+                    //labelColor : '#444',
+                    //labelFontSize : '1em',
+                    //label:"Present ("+{{$att->attendance_count}}+")"
+                },
+            @else
+                {
+                    value: {{$att->attendance_count}},
+                    color:"#FFFF00",
+                    //labelColor : '#444',
+                    //labelFontSize : '1em',                    
+                    //label:"N.A ("+{{$att->attendance_count}}+")"
+
+                },
+            @endif 
+        @endforeach
 
 ];
+
+var attendance_overall = [
+        @foreach ($attendance_overall as $att)
+            @if ($att->attendance == 'a')
+                {
+                    value: {{$att->attendance_count}},
+                    color:"#F7464A",
+                    //labelColor : '#444',
+                    //labelFontSize : '1em',
+                    //label:"Absent"
+
+                },
+            @elseif ($att->attendance == 'p')
+                {
+                    value: {{$att->attendance_count}},
+                    color:"#00FE00",
+                    //labelColor : '#444',
+                    //labelFontSize : '1em',
+                    //label:"Present"
+
+                },
+            @else
+                {
+                    value: {{$att->attendance_count}},
+                    color:"#FFFF00",
+                    //labelColor : '#444',
+                    //labelFontSize : '1em',
+                    //label:"N.A"
+
+                },
+            @endif 
+        @endforeach
+];
+
 var data2 = {
     labels : ["Attendance Session","Attendance Overall"],
     datasets : [
@@ -122,12 +194,17 @@ var data2 = {
         {
             fillColor : "rgba(151,187,205,0.5)",
             strokeColor : "rgba(151,187,205,1)",
-            data : [28,48]
+            data : [28,18]
         }
     ]
 };
-new Chart(ctx1).Doughnut(data);
-new Chart(ctx2).Doughnut(data);
+var options = {
+                        tooltips: {
+                                fontSize: '75.4%'
+                        }
+                };
+new Chart(ctx1).Doughnut(attendance_session,options);
+new Chart(ctx2).Doughnut(attendance_overall);
 new Chart(ctx3).Bar(data2);
 
     </script>

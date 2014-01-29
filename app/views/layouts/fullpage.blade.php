@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
 <script src="/static/jqueryui/js/jquery-1.9.1.js"></script>
 <script src="/static/bootstrap/js/bootstrap.js"></script>
+<link rel="stylesheet" href="/static/namma.css">
+<script src="/static/typeahead.min.js"></script>
+
 @section('header_section')
 @show
 
@@ -56,7 +59,7 @@
              <li><a href="">Help</a></li>     
           </ul>
           <form class="navbar-search pull-right">
-              <input type="text" class="search-query span2" name="search_mla_place" id="search_mla_place" placeholder="Search MLA or Constituency">
+              <input class="example-arabic typeahead tt-query" type="text"  placeholder="Search" autocomplete="off" spellcheck="false" />
           </form>
         </div><!-- /.nav-collapse -->
       </div> <!-- /container -->
