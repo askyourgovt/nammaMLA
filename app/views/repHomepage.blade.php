@@ -82,9 +82,9 @@
 <div class="row">
         <h3>Attendance Highlights</h3>
         <div class="span3">
+            <center>
             <h4>Recent Session Attendance</h4>
             <canvas id="last_session_attendance" data-type="Pie" width="250" height="250"></canvas>
-            <center>
             @foreach ($attendance_session as $att)
                 @if ($att->attendance == 'a')
                         Absent: {{$att->attendance_count}}
@@ -97,9 +97,9 @@
             </center>
         </div>
         <div class="span3">
-            <h4>Overall Attendance</h4>
-            <canvas id="overall_session_attendance" data-type="Pie" width="250" height="250"></canvas>
             <center>
+            <h4>All Time Attendance</h4>
+            <canvas id="overall_session_attendance" data-type="Pie" width="250" height="250"></canvas>
             @foreach ($attendance_overall as $att)
                 @if ($att->attendance == 'a')
                         Absent: {{$att->attendance_count}}

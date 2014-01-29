@@ -15,6 +15,10 @@ Route::get('/', 'HomeController@homeWelcome');
 
 Route::get('/about', 'StaticPagesController@aboutPage');
 Route::get('/license', 'StaticPagesController@licensePage');
+Route::get('/credits', 'StaticPagesController@creditsPage');
+Route::get('/terms', 'StaticPagesController@termsPage');
+Route::get('/links', 'StaticPagesController@linksPage');
+Route::get('/contact', 'StaticPagesController@contactPage');
 
 
 Route::get('/rep/{rep_key}', 'RepController@repHomepage');

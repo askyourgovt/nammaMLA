@@ -20,4 +20,22 @@ class StaticPagesController extends BaseController {
 		$this->layout->content = View::make('licensePage');
 	}
 
+	public function creditsPage()
+	{
+		$this->layout->content = View::make('licensePage');
+	}
+
+	public function termsPage()
+	{
+		$this->layout->content = View::make('licensePage');
+	}
+	public function contactPage()
+	{
+		$this->layout->content = View::make('licensePage');
+	}
+	public function linksPage()
+	{
+		$this->layout->content = View::make('licensePage');
+	}
+
 }

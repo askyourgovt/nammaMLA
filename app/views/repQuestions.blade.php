@@ -11,7 +11,6 @@
 @section('main_title')
     @parent
     <h2><?php echo $rep->name; ?></h2>            
-    <p class="lead"><?php echo $rep_role->role_name; ?> (<?php echo $rep_role->constituency_name; ?> - <?php echo $rep_role->constituency_number; ?>)</p>    
 @stop
 
 
