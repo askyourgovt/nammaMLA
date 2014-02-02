@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>NammaMLA</title>
+<title>{{trans('messages.Namma MLA')}}</title>
 <meta name="description"  content="">
 <meta property="og:title" content=""/>
 <meta property="og:description" content=""/>
@@ -33,7 +32,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="/">Namma MLA</a>
+        <a class="brand" href="/">{{trans('messages.Namma MLA')}}</a>
         <div class="nav-collapse">
           <ul class="nav">
               <li class="dropdown">

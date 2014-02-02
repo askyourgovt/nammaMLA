@@ -26,4 +26,17 @@ class HomeController extends BaseController {
 		$this->layout->content = View::make('homeWelcome');
 	}
 
+	public function homeLanguageChange($lang_key)
+	{
+
+		if($lang_key =="kannada"){
+			App::setLocale('kn');
+			Session::put('my.locale', 'kn');
+		}else{
+			App::setLocale('en');
+			Session::put('my.locale', 'en');
+		}
+		return Redirect::to('/');
+	}
+
 }

@@ -13,6 +13,9 @@
 
 Route::get('/', 'HomeController@homeWelcome');
 
+Route::get('/language/{lang_key}', 'HomeController@homeLanguageChange');
+
+
 Route::get('/about', 'StaticPagesController@aboutPage');
 Route::get('/license', 'StaticPagesController@licensePage');
 Route::get('/credits', 'StaticPagesController@creditsPage');
