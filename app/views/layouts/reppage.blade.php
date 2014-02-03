@@ -36,31 +36,38 @@
         <div class="nav-collapse">
           <ul class="nav">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Representatives<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{trans('messages.Representatives')}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="/assembly/fourteenth_kar_leg_assembly">14th Karnataka Legislative Assembly</a></li>
                 </ul>
                </li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cabinet<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{trans('messages.Cabinet')}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/cabinet/agenda/fourteenth_kar_leg_assembly">Agenda of Meetings</a></li>
+                  <li><a href="/cabinet/agenda/fourteenth_kar_leg_assembly">{{trans('messages.Agenda of Meetings')}}</a></li>
                 </ul>
                </li>
 
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About<b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{trans('messages.About')}}<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/about">About us</a></li>
-                  <li><a href="/license">License</a></li>
+                  <li><a href="/about">{{trans('messages.About us')}}</a></li>
+                  <li><a href="/license">{{trans('messages.License')}}</a></li>
                 </ul>
                </li>
-             <li><a href="">Help</a></li>     
+             <li>
+              @if (Config::get('app.locale') == 'kn' )   
+                <a href="/language/english">English</a> 
+              @else
+                <a href="/language/kannada">ಕನ್ನಡದಲ್ಲಿ</a>
+              @endif
+              </li>
+
           </ul>
           <form class="navbar-search pull-right">
-            <input class="example-arabic typeahead tt-query" type="text"  placeholder="Search" autocomplete="off" spellcheck="false" />
+              <input class="example-arabic typeahead tt-query" type="text"  placeholder="{{trans('messages.Search')}}" autocomplete="off" spellcheck="false" />
           </form>
-        </div><!-- /.nav-collapse -->
+      </div><!-- /.nav-collapse -->
       </div> <!-- /container -->
     </div><!-- /navbar-inner -->
   </div><!-- /navbar -->
